@@ -1,0 +1,73 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="completeOrder()" class="max-w-md mx-auto p-8">
+      <div class="relative z-0 w-full mb-5 group">
+        @let details = checkoutForm.get('details');
+       <input type="text" formControlName="details" name="floating_details" id="floating_details" class=" input-style peer"
+            placeholder=" " required />  
+        <label for="floating_details"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            details :</label>
+            @if ( details?.touched && details?.errors ) 
+            {
+    <div class=" mt-3 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div>
+                <ul class="mt-1.5 list-disc list-inside">
+                @if (details?.getError('required')) 
+                {
+                    <li>invalid pattern</li>
+                }
+                  </ul>
+        </div>
+      </div> 
+            }
+    </div>
+
+    <div class="relative z-0 w-full mb-5 group">
+        @let phone =checkoutForm.get("phone");
+       <input type="tel" formControlName="phone" name="floating_phone" id="floating_phone" class=" input-style peer"
+            placeholder=" " required />  
+        <label for="floating_phone"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            phone :</label>
+            @if ( phone?.touched && phone?.errors ) 
+            {
+    <div class=" mt-3 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div>
+                <ul class="mt-1.5 list-disc list-inside">
+                @if (phone?.getError('required')) 
+                {
+                    <li>invalid pattern</li>
+                }
+                  </ul>
+        </div>
+      </div> 
+            }
+    </div>
+
+    <div class="relative z-0 w-full mb-5 group">
+        @let city =checkoutForm.get("city");
+       <input type="text" formControlName="city" name="floating_city" id="floating_city" class=" input-style peer"
+            placeholder=" " required />  
+        <label for="floating_city"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            city :</label>
+            @if ( city?.touched && city?.errors ) 
+            {
+    <div class=" mt-3 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div>
+                <ul class="mt-1.5 list-disc list-inside">
+                @if (city?.getError('required')) 
+                {
+                    <li>invalid pattern</li>
+                }
+                  </ul>
+        </div>
+      </div> 
+            }
+    </div>
+      <button type="submit" class="bg-main px-8 py-1 rounded-md me-4" (click)="formAction='cashe'">
+        cashe
+  </button>
+  <button type="submit" class="bg-main px-8 py-1 rounded-md" (click)="formAction='online'">
+    online
+</button>
+    </form>

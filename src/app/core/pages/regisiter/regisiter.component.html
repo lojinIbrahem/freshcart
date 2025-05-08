@@ -1,0 +1,93 @@
+            
+
+<form [formGroup]="registerform" (ngSubmit)="register()" class="max-w-md mx-auto p-8">
+
+  @if (apiError) {
+  <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    {{apiError}}
+  </div>
+}
+
+    <div class="relative z-0 w-full mb-5 group">
+        @let Name =registerform.get("name");
+        
+    <input type="name" formControlName="name" name="floating_name" id="floating_name" class=" input-style peer"
+            placeholder=" " required /> 
+
+        <label for="floating_name"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            Name :</label>
+          <app-error-component [Name]="Name"></app-error-component>
+    </div>
+
+
+    <div class="relative z-0 w-full mb-5 group">
+        @let Email =registerform.get("email");
+        <app-custom-input  formControlName="email" [type]=" 'email' "  />
+
+      <!--  <input type="email" formControlName="email" name="floating_email" id="floating_email" class=" input-style peer"
+            placeholder=" " required /> -->
+
+        <label for="floating_email"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            Email :</label>
+           <app-error-component [Name]="Email"></app-error-component>
+    </div>
+
+
+    <div class="relative z-0 w-full mb-5 group">
+        @let password =registerform.get("password");
+        <app-custom-input  formControlName="password" [type]=" 'password' "  />
+
+       <!-- <input type="password" formControlName="password" name="floating_password" id="floating_password" class=" input-style peer"
+            placeholder=" " required />  -->
+
+        <label for="floating_password"
+            class=" label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            password :</label>
+          <app-error-component [Name]="password"></app-error-component>
+    </div>
+
+
+    <div class="relative z-0 w-full mb-5 group">
+        @let rePassword =registerform.get("rePassword");
+       <input type="password" formControlName="rePassword" name="floating_rePassword" id="floating_rePassword" class=" input-style peer"
+            placeholder=" " required />  
+        <label for="floating_rePassword"
+            class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+            rePassword :</label>
+            @if ( rePassword?.touched && (rePassword?.errors || registerform.getError('misMatch'))) 
+            {
+    <div class=" mt-3 flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div>
+                <ul class="mt-1.5 list-disc list-inside">
+                @if (rePassword?.getError('required')) 
+                {<li>invalid pattern</li>}
+                @else if(registerform.getError('misMatch')) 
+                { <li>Password and rePassword are misMatch</li> }
+                  </ul>
+        </div>
+      </div> 
+            }
+    </div>
+
+    <div class="relative z-0 w-full mb-5 group">
+      @let phone =registerform.get("phone");
+     
+      <input type="tel" formControlName="phone" name="floating_phone" id="floating_phone" class=" input-style peer"
+        placeholder=" " required /> 
+      <label for="floating_phone"
+        class="label-style peer-focus:font-medium peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-stone-950 peer-focus:dark:text-stone-950 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+        phone :</label>
+        <app-error-component [Name]="phone"></app-error-component>
+
+    </div>
+
+    <button type="submit" class="main-btn">
+      @if (Loading) {
+        <i class="fa fa-spin fa-spinner"></i>
+      }
+      @else {submit}
+</button>
+  </form>
+  

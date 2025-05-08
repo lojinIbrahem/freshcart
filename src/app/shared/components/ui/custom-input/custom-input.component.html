@@ -1,0 +1,8 @@
+<input 
+class="input-style peer"
+[value]="value"
+[placeholder]="placeHolder"
+[type]="type"
+(input)="onChange($any($event.target).value)"
+(blur)="onTouched()"
+/>

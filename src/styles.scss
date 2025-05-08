@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root
+{
+    --font-family:'Encode Sans Expanded', sans-serif;
+}
+
+
+body{
+    font-family: var(--font-family) !important;
+}
+
+
+
+.input-style{
+      @apply  block py-2.5 px-0 w-full text-sm text-purple-900 bg-transparent border-0 border-b-2 border-purple-900 appearance-none dark:text-purple-900 dark:border-purple-600 dark:focus:border-purple-900 focus:outline-none focus:ring-0 focus:border-purple-900 focus:pb-4;
+}
+
+.label-style{
+     @apply  absolute text-sm text-stone-800 dark:text-stone-800 duration-300  transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] ;
+}
+
+.main-btn{
+     @apply mt-4 mb-4 text-purple-950 bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium  rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main;
+}

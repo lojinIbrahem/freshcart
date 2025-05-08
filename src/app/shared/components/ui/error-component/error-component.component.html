@@ -1,0 +1,22 @@
+@if (Name?.errors && Name?.touched) 
+{
+<div class="flex p-4 mt-3 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+<div>
+
+      <ul class="mt-1.5 list-disc list-inside">
+    @if (Name?.getError('required')) 
+    {<li> required</li>}
+    @else if (Name?.getError('minlength')) 
+    { <li>At least 3 character</li>}
+    @else if (Name?.getError('maxlength')) 
+    {<li>max character is 20</li>}  
+    @else if (Name?.getError('email')) 
+    { <li> not valid pattern</li>}
+    @else if (Name?.getError('pattern')) 
+    { <li>not valid pattern</li>}
+    </ul>
+
+
+</div>
+</div>
+}
